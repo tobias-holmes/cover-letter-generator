@@ -1,0 +1,51 @@
+% =============================================================================
+% File: template_en.tex
+% Author: Tobias Holmes
+% Description: Cover letter template for job applications
+% Created: 2024-06-09
+% =============================================================================
+%%% PREAMBLE
+\documentclass[foldmarks=false,
+			   fromemail=true,
+			   fromurl=true,
+			   fromphone=false,
+			   fromfax=false,
+			   fromalign=right,
+			   backaddress=false,
+			   a4paper]{scrlttr2}
+\LoadLetterOption{DINmtext}
+\setplength{refvpos}{89mm}
+\usepackage[hidelinks]{hyperref}
+\usepackage[{{babel_language}}]{babel}
+\usepackage{fontspec}
+\setmainfont{Verdana}
+
+
+%%%END PREAMBLE
+%=============================================================================
+%%%BEGIN DOCUMENT
+\begin{document}
+
+% Sender info
+\setkomavar{fromname}{{ sender.name }}
+\setkomavar{fromaddress}{
+{{ sender.address.street }}\\\\%
+{{ sender.address.zip }} {{ sender.address.city }}\\\\%
+{{ sender.address.country }}
+}
+% \setkomavar{fromemail}[Email:]{\href{mailto:{{sender.email}}}{{sender.email}}}
+% \setkomavar{fromurl}[Web:]{\href{https://REMOVED_URL}{REMOVED_URL}}
+
+% Date and subject
+\setkomavar{date}{\today}
+\setkomavar{subject}{Application for Position}
+
+% Recipient info
+\begin{letter}{recpipient\\\\1234 Street Address\\\\City, State, Zip Code}
+	% \opening{Der Sir or Madam,}
+	Hello World!
+	% \closing{Kind regards,}
+\end{letter}
+\end{document}
+%%%END DOCUMENT
+%%%EOF
