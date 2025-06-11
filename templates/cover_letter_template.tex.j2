@@ -8,7 +8,7 @@
 \documentclass[foldmarks=false,
 			   fromemail=true,
 			   fromurl=true,
-			   fromphone=false,
+			   fromphone={%if sender.phone %}true{% else %}false{% endif %},
 			   fromfax=false,
 			   fromalign=right,
 			   backaddress=false,
@@ -30,10 +30,11 @@
 
 % Sender info
 \setkomavar{fromname}{ {{- sender.name -}} }
-\setkomavar{fromaddress}{ {% if sender.address.street %}{{- sender.address.street }}\\{% endif %}
-{% if sender.address.zip %}{{ sender.address.zip }} {{ sender.address.city }}{% endif %}
+\setkomavar{fromaddress}{ {% if sender.address.street %}{{- sender.address.street }}\\{% endif %}%
+{% if sender.address.zip %}{{ sender.address.zip }} {{ sender.address.city }}{% endif %}%
 {% if language == 'en' and sender.address.zip%}\\{{ sender.address.country }}{% endif %}%
 }
+\setkomavar{fromphone}[\faPhone]{ {% if sender.phone %}{{ sender.phone -}}{% endif %} }
 \setkomavar{fromemail}[\faEnvelope]{\href{mailto:{{- sender.email -}} }{ {{ sender.email -}} }}
 \setkomavar{fromurl}[\faGlobe]{\href{https://{{- sender.url -}} }{ {{ sender.url -}} }}
 
