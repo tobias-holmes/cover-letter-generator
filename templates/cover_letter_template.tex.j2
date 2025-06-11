@@ -32,8 +32,7 @@
 \setkomavar{fromname}{ {{- sender.name -}} }
 \setkomavar{fromaddress}{
 {{- sender.address.street }}\\%
-{{ sender.address.zip }} {{ sender.address.city }}\\%
-{{ sender.address.country }}
+{{ sender.address.zip }} {{ sender.address.city }} {% if language == 'en' %}\\{{ sender.address.country }}{% endif %}
 }
 \setkomavar{fromemail}[\faEnvelope]{\href{mailto:{{- sender.email -}} }{ {{ sender.email -}} }}
 \setkomavar{fromurl}[\faGlobe]{\href{https://{{- sender.url -}} }{ {{ sender.url -}} }}
