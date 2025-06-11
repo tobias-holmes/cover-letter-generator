@@ -16,3 +16,5 @@ recipient:
 position: Marketing Manager
 initiative: true
 cv_attached: false
+give_start_date: true
+give_salary_expectation: true

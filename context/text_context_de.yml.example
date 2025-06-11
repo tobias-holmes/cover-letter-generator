@@ -2,14 +2,14 @@ language: de
 babel_language: german
 
 subject: "{% if initiative == true %}Initiativbewerbung{% else %} Bewerbung als {{ position }}{% endif %}"
-opening: "{% if recipient.last_name %}Sehr geehrte{%if recipient.honorific == "Herr" or recipient.honorific == "Mr" %}r{% endif %} {{ recipient.honorific }} {{ recipient.last_name }},{% else %}Sehr geehrte Damen und Herren,{% endif %}"
+opening: "{% if recipient.last_name %}Sehr geehrte{% if recipient.honorific == "Herr" or recipient.honorific == "Mr" %}r{% endif %} {{ recipient.honorific }} {{ recipient.last_name }},{% else %}Sehr geehrte Damen und Herren,{% endif %}"
   - >
     Ich möchte hiermit mein Interesse an der Marketing-Position bei {{ recipient.company }} zum Ausdruck bringen.
     Mit einem starken Hintergrund in digitaler Strategie und Kommunikation bin ich überzeugt, wertvolle Beiträge zu Ihrem Team leisten zu können. {% if cv_attached %}Anbei finden Sie meinen Lebenslauf zur Durchsicht.{% endif %}
   - >
     Meine Erfahrung umfasst die Leitung erfolgreicher Kampagnen, die Steigerung der Markenbekanntheit und die Förderung der Kundenbindung. Gerne möchte ich für {{ recipient.company_short }} tätig werden.
   - >
-    {%if start_date %}Mein frühestmöglicher Eintrittstermin wäre der {{ start_date }}.{% endif %}
-    {%if salary_expectation %}Auf Basis meiner Qualifikationen und beruflichen Erfahrungen sehe ich ein Jahresbruttogehalt von {{ salary_expectation }} als angemessen.{% endif %}
+    {% if give_start_date == true %}Mein frühestmöglicher Eintrittstermin wäre der {{ start_date }}.{% endif %}
+    {% if give_salary_expectation == true %}Auf Basis meiner Qualifikationen und beruflichen Erfahrungen sehe ich ein Jahresbruttogehalt von {{ salary_expectation }} als angemessen.{% endif %}
 
 closing: Mit freundlichen Grüßen
