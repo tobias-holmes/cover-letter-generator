@@ -1,5 +1,5 @@
 subject: Application for Position as {{ position }}
-opening: Dear Sir or Madam
+opening: "{% if recipient.last_name %}Dear {{ recipient.honorific }} {{ recipient.last_name }},{% else %}Dear Sir or Madam,{% endif %}"
 body:
   - >
     I am writing to express my interest in the Marketing Position at Acme Corp. 

@@ -18,7 +18,7 @@ def load_yaml_with_jinja(filename, context):
     return yaml.safe_load(StringIO(rendered_yaml))
 
 
-# Reder the LaTeX file from Jinja2 template
+# Render the LaTeX file from Jinja2 template
 def render_tex_file(output_filename, language="en"):
     """
     Render a LaTeX file from a Jinja2 template using data from YAML files. Places the output in 'renders/' directory.
@@ -27,13 +27,13 @@ def render_tex_file(output_filename, language="en"):
     """
     # Import the YAML files
     # Personal info and recipient info
-    with open("personal_context.yml", "r") as file:
+    with open("context/personal_context.yml", "r") as file:
         personal_data = yaml.safe_load(file)
     # Cover letter content
     if language == "de":
-        text_data = load_yaml_with_jinja("text_context_de.yml", personal_data)
+        text_data = load_yaml_with_jinja("context/text_context_de.yml", personal_data)
     else:
-        text_data = load_yaml_with_jinja("text_context_en.yml", personal_data)
+        text_data = load_yaml_with_jinja("context/text_context_en.yml", personal_data)
 
     # Combine data from both YAML files
     data = {**personal_data, **text_data}

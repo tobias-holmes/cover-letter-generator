@@ -1,5 +1,5 @@
 subject: Bewerbung als {{ position }}
-opening: Sehr geehrte Damen und Herren,
+opening: "{% if recipient.last_name %}Sehr geehrter {{ recipient.honorific }} {{ recipient.last_name }},{% else %}Sehr geehrte Damen und Herren,{% endif %}"
 body:
   - >
     Ich möchte hiermit mein Interesse an der Marketing-Position bei Acme Corp zum Ausdruck bringen.

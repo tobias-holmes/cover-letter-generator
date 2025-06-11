@@ -17,8 +17,8 @@ sender:
 
 recipient:
   honorific: Mr
-  fname: John
-  lname: Smith
+  first_name: John
+  last_name: Smith
   company: Acme Corp
   address:
     street: 456 Business Rd

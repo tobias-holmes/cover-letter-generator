@@ -1,7 +1,7 @@
 % =============================================================================
-% File: template_en.tex
+% File: cover_letter-template.tex.j2
 % Author: Tobias Holmes
-% Description: Cover letter template for job applications
+% Description: Cover letter template in LaTeX/Jinja2 for job applications
 % Created: 06/2025
 % =============================================================================
 %%% PREAMBLE
@@ -49,7 +49,7 @@
 	{{ recipient.address.zip }} {{ recipient.address.city }}\\%
 	{{ recipient.address.country }}}
 
-	\opening{ {% if recipient.lname %}Dear {{ recipient.honorific }} {{ recipient.lname -}}{% else %} {{- opening -}} {% endif %},}
+	\opening{ {{- opening -}} }
 	{% for block in body %}
 	{{ block }}
 	{% endfor %}
