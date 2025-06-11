@@ -1,4 +1,4 @@
-# date: 01.06.2025
+date: \today
 
 recipient:
   honorific: Mr
@@ -13,6 +13,7 @@ recipient:
   email: name@example.com
 
 position: Marketing Manager
+initiative: true
 start_date: July 1, 2025
 salary_expectation: 1.000.000 Euro
 cv_attached: false

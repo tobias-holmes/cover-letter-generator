@@ -38,7 +38,8 @@
 \setkomavar{fromurl}[\faGlobe]{\href{https://{{- sender.url -}} }{ {{ sender.url -}} }}
 
 % Date and subject
-\setkomavar{date}{ {% if date %} {{- date -}} {% else %} \today {% endif %} }
+\setkomavar{date}{ {{- date -}} }
+%\setkomavar{date}{ {% if date %} {{- date -}} {% else %} \today {% endif %} }
 \setkomavar{subject}{ {{- subject -}} }
 
 % Recipient info
