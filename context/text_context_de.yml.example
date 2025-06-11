@@ -7,7 +7,7 @@ opening: "{% if recipient.last_name %}Sehr geehrte{%if recipient.honorific == "H
     Ich möchte hiermit mein Interesse an der Marketing-Position bei {{ recipient.company }} zum Ausdruck bringen.
     Mit einem starken Hintergrund in digitaler Strategie und Kommunikation bin ich überzeugt, wertvolle Beiträge zu Ihrem Team leisten zu können. {% if cv_attached %}Anbei finden Sie meinen Lebenslauf zur Durchsicht.{% endif %}
   - >
-    Meine Erfahrung umfasst die Leitung erfolgreicher Kampagnen, die Steigerung der Markenbekanntheit und die Förderung der Kundenbindung.
+    Meine Erfahrung umfasst die Leitung erfolgreicher Kampagnen, die Steigerung der Markenbekanntheit und die Förderung der Kundenbindung. Gerne möchte ich für {{ recipient.company_short }} tätig werden.
   - >
     {%if start_date %}Mein frühestmöglicher Eintrittstermin wäre der {{ start_date }}.{% endif %}
     {%if salary_expectation %}Auf Basis meiner Qualifikationen und beruflichen Erfahrungen sehe ich ein Jahresbruttogehalt von {{ salary_expectation }} als angemessen.{% endif %}

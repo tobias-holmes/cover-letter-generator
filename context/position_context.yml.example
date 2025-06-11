@@ -5,6 +5,7 @@ recipient:
   first_name: John
   last_name: Smith
   company: Acme Corp
+  company_short: Acme
   address:
     street: 456 Business Rd
     zip: 67890
