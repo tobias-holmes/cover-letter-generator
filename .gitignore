@@ -1,6 +1,10 @@
 # Rendered tex files
 /renders/*.tex
 
+# Yaml files in context
+/context/*.yaml
+/context/*.yml
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
