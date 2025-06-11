@@ -2,7 +2,7 @@
 % File: template_en.tex
 % Author: Tobias Holmes
 % Description: Cover letter template for job applications
-% Created: 2024-06-09
+% Created: 06/2025
 % =============================================================================
 %%% PREAMBLE
 \documentclass[foldmarks=false,
@@ -12,12 +12,14 @@
 			   fromfax=false,
 			   fromalign=right,
 			   backaddress=false,
+			   parskip=half,
 			   a4paper]{scrlttr2}
 \LoadLetterOption{DINmtext}
 \setplength{refvpos}{89mm}
 \usepackage[hidelinks]{hyperref}
-\usepackage[{{babel_language}}]{babel}
+\usepackage[{{ babel_language }}]{babel}
 \usepackage{fontspec}
+\usepackage{fontawesome5}
 \setmainfont{Verdana}
 
 
@@ -27,24 +29,35 @@
 \begin{document}
 
 % Sender info
-\setkomavar{fromname}{{ sender.name }}
+\setkomavar{fromname}{ {{- sender.name -}} }
 \setkomavar{fromaddress}{
-{{ sender.address.street }}\\\\%
-{{ sender.address.zip }} {{ sender.address.city }}\\\\%
+{{- sender.address.street }}\\%
+{{ sender.address.zip }} {{ sender.address.city }}\\%
 {{ sender.address.country }}
 }
-% \setkomavar{fromemail}[Email:]{\href{mailto:{{sender.email}}}{{sender.email}}}
-% \setkomavar{fromurl}[Web:]{\href{https://REMOVED_URL}{REMOVED_URL}}
+\setkomavar{fromemail}[\faEnvelope]{\href{mailto:{{- sender.email -}} }{ {{ sender.email -}} }}
+\setkomavar{fromurl}[\faGlobe]{\href{https://{{- sender.url -}} }{ {{ sender.url -}} }}
 
 % Date and subject
-\setkomavar{date}{\today}
-\setkomavar{subject}{Application for Position}
+\setkomavar{date}{ {% if date %} {{- date -}} {% else %} \today {% endif %} }
+\setkomavar{subject}{ {{- subject -}} }
 
 % Recipient info
-\begin{letter}{recpipient\\\\1234 Street Address\\\\City, State, Zip Code}
-	% \opening{Der Sir or Madam,}
-	Hello World!
-	% \closing{Kind regards,}
+\begin{letter}{ \textbf{ {{- recipient.company -}} }\\%
+	{{- recipient.fname -}} {{- recipient.lname -}}\\%
+	{{ recipient.address.street }}\\%
+	{{ recipient.address.zip }} {{ recipient.address.city }}\\%
+	{{ recipient.address.country }}}
+
+	\opening{ {% if recipient.lname %}Dear {{ recipient.honorific }} {{ recipient.lname -}}{% else %} {{- opening -}} {% endif %},}
+	{% for block in body %}
+	{{ block }}
+	{% endfor %}
+	{%if start_date %}
+	{{- body_start_date -}}
+	{% endif %}{%if salary_expectation %}{{- body_salary -}}{% endif %}
+	\closing{ {% if closing %} {{- closing -}} {% else %} Sincerely, {% endif %}}
+
 \end{letter}
 \end{document}
 %%%END DOCUMENT
