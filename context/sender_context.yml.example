@@ -8,3 +8,6 @@ sender:
   email: jane@example.com
   url: www.example.com
   phone: "+49 123 456789"
+
+start_date: July 1, 2025
+salary_expectation: 1.000.000 Euro
