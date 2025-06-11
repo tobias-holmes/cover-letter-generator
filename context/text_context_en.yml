@@ -1,9 +1,12 @@
+language: en
+babel_language: british
+
 subject: Application for Position as {{ position }}
 opening: "{% if recipient.last_name %}Dear {{ recipient.honorific }} {{ recipient.last_name }},{% else %}Dear Sir or Madam,{% endif %}"
 body:
   - >
     I am writing to express my interest in the Marketing Position at Acme Corp. 
-    With a strong background in digital strategy and communication, I believe I can bring valuable contributions to your team.
+    With a strong background in digital strategy and communication, I believe I can bring valuable contributions to your team. {% if cv_attached %}Please find my CV attached for your review.{% endif %}
   - >
     My experience includes managing successful campaigns, enhancing brand visibility, and driving customer engagement.
 body_start_date: >

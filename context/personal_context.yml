@@ -1,6 +1,3 @@
-language: en
-babel_language: british
-
 # date: 01.06.2025
 
 sender:
@@ -30,3 +27,4 @@ recipient:
 position: Marketing Manager
 start_date: July 1, 2025
 salary_expectation: 1.000.000 Euro
+cv_attached: false

@@ -1,9 +1,12 @@
+language: de
+babel_language: german
+
 subject: Bewerbung als {{ position }}
 opening: "{% if recipient.last_name %}Sehr geehrter {{ recipient.honorific }} {{ recipient.last_name }},{% else %}Sehr geehrte Damen und Herren,{% endif %}"
 body:
   - >
     Ich möchte hiermit mein Interesse an der Marketing-Position bei Acme Corp zum Ausdruck bringen.
-    Mit einem starken Hintergrund in digitaler Strategie und Kommunikation bin ich überzeugt, wertvolle Beiträge zu Ihrem Team leisten zu können.
+    Mit einem starken Hintergrund in digitaler Strategie und Kommunikation bin ich überzeugt, wertvolle Beiträge zu Ihrem Team leisten zu können. {% if cv_attached %}Anbei finden Sie meinen Lebenslauf zur Durchsicht.{% endif %}
   - >
     Meine Erfahrung umfasst die Leitung erfolgreicher Kampagnen, die Steigerung der Markenbekanntheit und die Förderung der Kundenbindung.
 body_start_date: >
