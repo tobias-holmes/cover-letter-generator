@@ -26,24 +26,34 @@ def render_tex_file(output_filename, language="en"):
     :param language: Language for the cover letter content, either 'en' or 'de'.
     """
     # Import the YAML files
-    # Personal info and recipient info
-    with open("context/personal_context.yml", "r") as file:
-        personal_data = yaml.safe_load(file)
+    # Personal info
+    with open("context/sender_context.yml", "r") as file:
+        sender_context = yaml.safe_load(file)
+    with open("context/position_context.yml", "r") as file:
+        postion_context = yaml.safe_load(file)
+
+    # Combine personal data
+    sender_position_context = {**sender_context, **postion_context}
+
     # Cover letter content
     if language == "de":
-        text_data = load_yaml_with_jinja("context/text_context_de.yml", personal_data)
+        text_context = load_yaml_with_jinja(
+            "context/text_context_de.yml", sender_position_context
+        )
     else:
-        text_data = load_yaml_with_jinja("context/text_context_en.yml", personal_data)
+        text_context = load_yaml_with_jinja(
+            "context/text_context_en.yml", sender_position_context
+        )
 
     # Combine data from both YAML files
-    data = {**personal_data, **text_data}
+    context = {**sender_position_context, **text_context}
 
     # Set up Jinja2 environment
     env = Environment(loader=FileSystemLoader("templates"))
     template = env.get_template("cover_letter_template.tex.j2")
 
     # Render LaTeX
-    rendered = template.render(**data)
+    rendered = template.render(**context)
 
     # Save .tex file
     tex_file = "renders/" + output_filename
@@ -62,5 +72,5 @@ def compile_tex_to_pdf(tex_filename):
 
 if __name__ == "__main__":
     tex_filename = "cover_letter.tex"
-    render_tex_file(tex_filename, language="de")
+    render_tex_file(tex_filename, language="en")
     compile_tex_to_pdf(tex_filename)

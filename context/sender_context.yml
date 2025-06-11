@@ -1,0 +1,11 @@
+sender:
+  name: Jane Doe
+  address:
+    street: 123 Main Street 
+    zip: 12345
+    city: City
+    country: Country
+  email: jane@example.com
+  url: www.example.com
+  phone: "+49 123 456789"
+  signature: Jane Doe
