@@ -1,0 +1,14 @@
+subject: Application for Position as {{ position }}
+opening: Dear Sir or Madam
+body:
+  - >
+    I am writing to express my interest in the Marketing Position at Acme Corp. 
+    With a strong background in digital strategy and communication, I believe I can bring valuable contributions to your team.
+  - >
+    My experience includes managing successful campaigns, enhancing brand visibility, and driving customer engagement.
+body_start_date: >
+  I am particularly drawn to Acme Corp's innovative approach and commitment to excellence, which aligns with my professional values.
+  I am available from {{ start_date }} and am eager to discuss how my skills can benefit your organization.
+body_salary: My salary expectation is {{ salary_expectation }}.
+
+closing: Kind regards

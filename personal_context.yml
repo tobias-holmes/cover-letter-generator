@@ -1,6 +1,8 @@
 language: en
 babel_language: british
 
+# date: 01.06.2025
+
 sender:
   name: Jane Doe
   address:
@@ -9,12 +11,14 @@ sender:
     city: City
     country: Country
   email: jane@example.com
-  website: www.example.com
+  url: www.example.com
   phone: "+49 123 456789"
   signature: Jane Doe
 
 recipient:
-  name: John Smith
+  honorific: Mr
+  fname: John
+  lname: Smith
   company: Acme Corp
   address:
     street: 456 Business Rd
@@ -23,12 +27,6 @@ recipient:
     country: Country
   email: name@example.com
 
-subject: Application for Position
-opening: Dear Sir or Madam,
-body: >
-  I am writing to express my interest in the Marketing Position at Acme Corp. 
-  With a strong background in digital strategy and communication, I believe I can bring valuable contributions to your team.
-
+position: Marketing Manager
 start_date: July 1, 2025
-salary_expectation: 60,000 Euro
-closing: Kind regards,
+salary_expectation: 1.000.000 Euro

@@ -1,0 +1,14 @@
+subject: Bewerbung als {{ position }}
+opening: Sehr geehrte Damen und Herren,
+body:
+  - >
+    Ich möchte hiermit mein Interesse an der Marketing-Position bei Acme Corp zum Ausdruck bringen.
+    Mit einem starken Hintergrund in digitaler Strategie und Kommunikation bin ich überzeugt, wertvolle Beiträge zu Ihrem Team leisten zu können.
+  - >
+    Meine Erfahrung umfasst die Leitung erfolgreicher Kampagnen, die Steigerung der Markenbekanntheit und die Förderung der Kundenbindung.
+body_start_date: >
+  Besonders angesprochen hat mich der innovative Ansatz und das Engagement von Acme Corp für Exzellenz, was meinen beruflichen Werten entspricht.
+  Ich stehe Ihnen ab dem {{ start_date }} zur Verfügung und freue mich darauf, mit Ihnen zu besprechen, wie meine Fähigkeiten Ihrem Unternehmen zugutekommen können.
+body_salary: Meine Gehaltsvorstellung beträgt {{ salary_expectation }}.
+
+closing: Mit freundlichen Grüßen
