@@ -1,7 +1,7 @@
 language: de
 babel_language: german
 
-subject: Bewerbung als {{ position }}
+subject: "{% if initiative == true %}Initiativbewerbung{% else %} Bewerbung als {{ position }}{% endif %}"
 opening: "{% if recipient.last_name %}Sehr geehrter {{ recipient.honorific }} {{ recipient.last_name }},{% else %}Sehr geehrte Damen und Herren,{% endif %}"
 body:
   - >

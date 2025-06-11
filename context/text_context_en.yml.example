@@ -1,7 +1,7 @@
 language: en
 babel_language: british
 
-subject: Application for Position as {{ position }}
+subject: "{% if initiative == true %}Speculative Application{% else %}Application for the Position of {{ position }}{% endif %}"
 opening: "{% if recipient.last_name %}Dear {{ recipient.honorific }} {{ recipient.last_name }},{% else %}Dear Sir or Madam,{% endif %}"
 body:
   - >
