@@ -56,7 +56,7 @@
 	{% for block in body %}
 	{{ block }}
 	{% endfor %}
-	\closing{ {% if closing %} {{- closing -}} {% else %} Sincerely, {% endif %}}
+	\closing{\raggedright {% if closing %} {{- closing -}} {% else %} Sincerely, {% endif %}}
 
 \end{letter}
 \end{document}
