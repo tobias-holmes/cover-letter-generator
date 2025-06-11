@@ -1,6 +1,6 @@
 sender:
   name: Jane Doe
-  address:
+  address: # Must not be commented out. Comment out entries within the address block as needed.
     street: 123 Main Street 
     zip: 12345
     city: City
@@ -8,4 +8,3 @@ sender:
   email: jane@example.com
   url: www.example.com
   phone: "+49 123 456789"
-  signature: Jane Doe
