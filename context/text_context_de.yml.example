@@ -2,8 +2,7 @@ language: de
 babel_language: german
 
 subject: "{% if initiative == true %}Initiativbewerbung{% else %} Bewerbung als {{ position }}{% endif %}"
-opening: "{% if recipient.last_name %}Sehr geehrter {{ recipient.honorific }} {{ recipient.last_name }},{% else %}Sehr geehrte Damen und Herren,{% endif %}"
-body:
+opening: "{% if recipient.last_name %}Sehr geehrte{%if recipient.honorific == "Herr" or recipient.honorific == "Mr" %}r{% endif %} {{ recipient.honorific }} {{ recipient.last_name }},{% else %}Sehr geehrte Damen und Herren,{% endif %}"
   - >
     Ich möchte hiermit mein Interesse an der Marketing-Position bei {{ recipient.company }} zum Ausdruck bringen.
     Mit einem starken Hintergrund in digitaler Strategie und Kommunikation bin ich überzeugt, wertvolle Beiträge zu Ihrem Team leisten zu können. {% if cv_attached %}Anbei finden Sie meinen Lebenslauf zur Durchsicht.{% endif %}
