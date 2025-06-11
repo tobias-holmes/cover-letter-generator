@@ -8,9 +8,8 @@ opening: "{% if recipient.last_name %}Sehr geehrte{%if recipient.honorific == "H
     Mit einem starken Hintergrund in digitaler Strategie und Kommunikation bin ich überzeugt, wertvolle Beiträge zu Ihrem Team leisten zu können. {% if cv_attached %}Anbei finden Sie meinen Lebenslauf zur Durchsicht.{% endif %}
   - >
     Meine Erfahrung umfasst die Leitung erfolgreicher Kampagnen, die Steigerung der Markenbekanntheit und die Förderung der Kundenbindung.
-body_start_date: >
-  Besonders angesprochen hat mich der innovative Ansatz und das Engagement von {{ recipient.company }} für Exzellenz, was meinen beruflichen Werten entspricht.
-  Ich stehe Ihnen ab dem {{ start_date }} zur Verfügung und freue mich darauf, mit Ihnen zu besprechen, wie meine Fähigkeiten Ihrem Unternehmen zugutekommen können.
-body_salary: Meine Gehaltsvorstellung beträgt {{ salary_expectation }}.
+  - >
+    {%if start_date %}Mein frühestmöglicher Eintrittstermin wäre der {{ start_date }}.{% endif %}
+    {%if salary_expectation %}Auf Basis meiner Qualifikationen und beruflichen Erfahrungen sehe ich ein Jahresbruttogehalt von {{ salary_expectation }} als angemessen.{% endif %}
 
 closing: Mit freundlichen Grüßen

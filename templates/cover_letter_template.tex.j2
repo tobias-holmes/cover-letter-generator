@@ -54,9 +54,6 @@
 	{% for block in body %}
 	{{ block }}
 	{% endfor %}
-	{%if start_date %}
-	{{- body_start_date -}}
-	{% endif %}{%if salary_expectation %}{{- body_salary -}}{% endif %}
 	\closing{ {% if closing %} {{- closing -}} {% else %} Sincerely, {% endif %}}
 
 \end{letter}
