@@ -1,5 +1,6 @@
 sender:
-  name: Jane Doe
+  first_name: Jane
+  last_name: Doe
   address: # Must not be commented out. Comment out entries within the address block as needed.
     street: 123 Main Street 
     zip: 12345

@@ -31,7 +31,7 @@
 \begin{document}
 
 % Sender info
-\setkomavar{fromname}{ {{- sender.name -}} }
+\setkomavar{fromname}{ {{- sender.first_name }} {{ sender.last_name -}} }
 \setkomavar{fromaddress}{ {% if sender.address.street %}{{- sender.address.street }}\\{% endif %}%
 {% if sender.address.zip %}{{ sender.address.zip }} {{ sender.address.city }}{% endif %}%
 {% if language == 'en' and sender.address.zip%}\\{{ sender.address.country }}{% endif %}%
