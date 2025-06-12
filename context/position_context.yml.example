@@ -1,16 +1,19 @@
-date: \today
+### position_context.yml
+# Add information about the position and recipient here. Comment out fields that should not be included in the cover letter.
+
+date: \today                  # Replace with a specific date if needed. 
 
 recipient:
   honorific: Mr
   first_name: John
-  last_name: Smith
+  last_name: Smith            # Comment out to address only the company, not an individual
   company: Acme Corp
-  company_short: Acme
-  address:
+  company_short: Acme         # Add a short name for the company if needed, this can be used e.g. in the body of the letter.
+  address:                    # Comment out if the address should not be included in the cover letter, but leave the address key.
     street: 456 Business Rd
     zip: 67890
     city: City
-    country: Country
+    country: Country          # Country will only used, if it differs from the country of the sender. 
   email: name@example.com
 
 position: Marketing Manager

@@ -8,7 +8,7 @@
 \documentclass[foldmarks=false,
 			   fromemail=true,
 			   fromurl=true,
-			   fromphone={%if sender.phone %}true{% else %}false{% endif %},
+			   fromphone={% if sender.phone %}true{% else %}false{% endif %},
 			   fromfax=false,
 			   fromalign=right,
 			   backaddress=false,
@@ -42,15 +42,16 @@
 
 % Date and subject
 \setkomavar{date}{ {{- date -}} }
-%\setkomavar{date}{ {% if date %} {{- date -}} {% else %} \today {% endif %} }
 \setkomavar{subject}{ {{- subject -}} }
 
 % Recipient info
 \begin{letter}{ \textbf{ {{- recipient.company -}} }\\%
-	{{- recipient.fname -}} {{- recipient.lname -}}\\%
-	{{ recipient.address.street }}\\%
-	{{ recipient.address.zip }} {{ recipient.address.city }}\\%
-	{{ recipient.address.country }}}
+	{% if recipient.last_name %}{{- recipient.honorific }} {{ recipient.first_name }} {{ recipient.last_name -}}\\{% endif %}%
+	{% if recipient.address.street %}{{- recipient.address.street -}}\\{% endif %}%
+	{% if recipient.address.city or recipient.address.zip %}{{- recipient.address.zip }} {{ recipient.address.city -}}\\{% endif %}%
+	{% if recipient.address.country != sender.address.country %}{{- recipient.address.country -}}\\{% endif %}%
+	{% if recipient.email %}{{- recipient.email -}}\\{% endif %}%
+	}
 
 	\opening{ {{- opening -}} }
 	{% for block in body %}
