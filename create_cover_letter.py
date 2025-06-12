@@ -19,11 +19,11 @@ def load_yaml_with_jinja(filename, context):
 
 
 # Render the LaTeX file from Jinja2 template
-def render_tex_file(output_filename, language="en"):
+def render_tex_file(language="en"):
     """
     Render a LaTeX file from a Jinja2 template using data from YAML files. Places the output in 'renders/' directory.
-    :param output_filename: Name of the output .tex file.
     :param language: Language for the cover letter content, either 'en' or 'de'.
+    :return: Name of the generated .tex file.
     """
     # Import the YAML files
     with open("context/sender_context.yml", "r") as file:
@@ -54,10 +54,22 @@ def render_tex_file(output_filename, language="en"):
     # Render LaTeX
     rendered = template.render(**context)
 
+    # Extract relevant information for the filename
+    sender_first_name = context["sender"]["first_name"]
+    sender_last_name = context["sender"]["last_name"]
+    # Combine the first initial with the last name
+    sender_identifier = f"{sender_first_name[0]}{sender_last_name}"
+    company = position_context["recipient"]["company"]
+
+    # Create dynamic filename
+    output_filename = f"cover_letter-{company}-{sender_identifier}.tex"
+
     # Save .tex file
     tex_file = "renders/" + output_filename
     with open(tex_file, "w") as f:
         f.write(rendered)
+
+    return output_filename
 
 
 # Compile TeX to PDF
@@ -70,25 +82,8 @@ def compile_tex_to_pdf(tex_filename):
 
 
 if __name__ == "__main__":
-
-    # Load sender and position context to create filename
-    with open("context/sender_context.yml", "r") as file:
-        sender_context = yaml.safe_load(file)
-    with open("context/position_context.yml", "r") as file:
-        position_context = yaml.safe_load(file)
-
-    # Extract relevant information for the filename
-    sender_first_name = sender_context["sender"]["first_name"]
-    sender_last_name = sender_context["sender"]["last_name"]
-    # Combine the first initial with the last name
-    sender_identifier = f"{sender_first_name[0]}{sender_last_name}"
-    company = position_context["recipient"]["company"]
-
-    # Create dynamic filename
-    tex_filename = f"cover_letter-{company}-{sender_identifier}.tex"
-
     # Get language input from user, default to 'de'
     language = input("Enter language (en/DE): ").strip().lower() or "de"
 
-    render_tex_file(tex_filename, language=language)
-    compile_tex_to_pdf(tex_filename)
+    filename = render_tex_file(language=language)
+    compile_tex_to_pdf(filename)
