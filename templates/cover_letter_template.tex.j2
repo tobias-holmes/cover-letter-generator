@@ -1,9 +1,21 @@
-% =============================================================================
-% File: cover_letter-template.tex.j2
-% Author: Tobias Holmes
-% Description: Cover letter template in LaTeX/Jinja2 for job applications
-% Created: 06/2025
-% =============================================================================
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Jinja template for a TeX cover letter.
+% Copyright (C) 2025  Tobias Holmes
+
+% This program is free software: you can redistribute it and/or modify
+% it under the terms of the GNU General Public License as published by
+% the Free Software Foundation, either version 3 of the License, or
+% any later version.
+
+% This program is distributed in the hope that it will be useful,
+% but WITHOUT ANY WARRANTY; without even the implied warranty of
+% MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+% GNU General Public License for more details.
+
+% You should have received a copy of the GNU General Public License
+% along with this program.  If not, see <https://www.gnu.org/licenses/>.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 %%% PREAMBLE
 \documentclass[foldmarks=false,
 			   fromemail=true,
@@ -35,7 +47,7 @@
 \setkomavar{fromaddress}{ {% if sender.address.street %}{{- sender.address.street }}\\{% endif %}%
 {% if sender.address.zip %}{{ sender.address.zip }} {{ sender.address.city }}{% endif %}%
 {% if language == 'en' and sender.address.zip%}\\{{ sender.address.country }}{% endif %}%
-}
+	}
 \setkomavar{fromphone}[\faPhone]{ {% if sender.phone %}{{ sender.phone -}}{% endif %} }
 \setkomavar{fromemail}[\faEnvelope]{\href{mailto:{{- sender.email -}} }{ {{ sender.email -}} }}
 \setkomavar{fromurl}[\faGlobe]{\href{https://{{- sender.url -}} }{ {{ sender.url -}} }}
@@ -51,7 +63,7 @@
 	{% if recipient.address.city or recipient.address.zip %}{{- recipient.address.zip }} {{ recipient.address.city -}}\\{% endif %}%
 	{% if recipient.address.country != sender.address.country %}{{- recipient.address.country -}}\\{% endif %}%
 	{% if recipient.email %}{{- recipient.email -}}\\{% endif %}%
-	}
+		}
 
 	\opening{ {{- opening -}} }
 	{% for block in body %}

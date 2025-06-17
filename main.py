@@ -1,3 +1,22 @@
+#######################################################################
+# Creates a cover letter using LaTeX/Jinja templates as well as yaml
+# context files.
+# Copyright (C) 2025  Tobias Holmes
+
+# This program is free software: you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation, either version 3 of the License, or
+#  any later version.
+
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+
+# You should have received a copy of the GNU General Public License
+# along with this program. If not, see <https://www.gnu.org/licenses/>.
+#######################################################################
+
 import yaml
 import subprocess
 from jinja2 import Environment, FileSystemLoader
@@ -85,6 +104,16 @@ def compile_tex_to_pdf(tex_filename: str) -> None:
 
 
 if __name__ == "__main__":
+    # Print license notice
+    print(
+        """
+        Cover Letter Generator - Copyright (C) 2025  Tobias Holmes
+        This program comes with ABSOLUTELY NO WARRANTY;
+        This is free software, and you are welcome to redistribute it
+        under certain conditions; see GPL v3 for details.
+        """
+    )
+
     # Get language input from user, default to 'de'
     language = input("Enter language (en/DE): ").strip().lower() or "de"
 
