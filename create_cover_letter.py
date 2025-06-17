@@ -5,7 +5,7 @@ from io import StringIO
 
 
 # Function to load YAML files with Jinja2 templating
-def load_yaml_with_jinja(filename, context):
+def load_yaml_with_jinja(filename: str, context: str) -> dict:
     """
     Load a YAML file and render it with Jinja2 templating.
     :param filename: Path to the YAML file.
@@ -19,7 +19,7 @@ def load_yaml_with_jinja(filename, context):
 
 
 # Render the LaTeX file from Jinja2 template
-def render_tex_file(language="en"):
+def render_tex_file(language: str = "en") -> str:
     """
     Render a LaTeX file from a Jinja2 template using data from YAML files. Places the output in 'renders/' directory.
     :param language: Language for the cover letter content, either 'en' or 'de'.
@@ -39,10 +39,12 @@ def render_tex_file(language="en"):
         text_context = load_yaml_with_jinja(
             "context/text_context_de.yml", sender_position_context
         )
-    else:
+    elif language == "en":
         text_context = load_yaml_with_jinja(
             "context/text_context_en.yml", sender_position_context
         )
+    else:
+        raise ValueError(f"Unsupported language '{language}'. Please use 'en' or 'de'.")
 
     # Combine data from both YAML files
     context = {**sender_position_context, **text_context}
@@ -74,7 +76,7 @@ def render_tex_file(language="en"):
 
 
 # Compile TeX to PDF
-def compile_tex_to_pdf(tex_filename):
+def compile_tex_to_pdf(tex_filename: str) -> None:
     """
     Compile a LaTeX file to PDF using lualatex. Working directory is set to 'renders'.
     :param tex_filename: Name of the .tex file to compile.
