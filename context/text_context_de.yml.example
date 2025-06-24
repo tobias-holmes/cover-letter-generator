@@ -9,7 +9,9 @@ opening: "{% if recipient.last_name %}Sehr geehrte{% if recipient.honorific == "
   - >
     Meine Erfahrung umfasst die Leitung erfolgreicher Kampagnen, die Steigerung der Markenbekanntheit und die Förderung der Kundenbindung. Gerne möchte ich für {{ recipient.company_short }} tätig werden.
   - >
-    {% if give_start_date == true %}Mein frühestmöglicher Eintrittstermin wäre der {{ start_date }}.{% endif %}
+    {% if give_start_date == true %}{% if (start_date_iso | string) > (today | string) %}
+    Mein frühestmöglicher Eintrittstermin wäre der {{ start_date }}.
+    {% else %}Ich bin ab sofort verfügbar.{% endif %}{% endif %}
     {% if give_salary_expectation == true %}Auf Basis meiner Qualifikationen und beruflichen Erfahrungen sehe ich ein Jahresbruttogehalt von {{ salary_expectation }} als angemessen.{% endif %}
 
 closing: Mit freundlichen Grüßen

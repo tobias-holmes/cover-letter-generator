@@ -13,5 +13,5 @@ sender:
   url: www.example.com
   phone: "+49 123 456789"
 
-start_date: July 1, 2025
+start_date_iso: 2025-07-01        # in ISO format YYYY-MM-DD ; a variable "star_date" with format DD.MM.YYYY is derived from this automatically.
 salary_expectation: 1.000.000 Euro

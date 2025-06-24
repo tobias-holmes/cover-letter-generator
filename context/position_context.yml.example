@@ -1,7 +1,7 @@
 ### position_context.yml
 # Add information about the position and recipient here. Comment out fields that should not be included in the cover letter.
 
-date: \today                  # Replace with a specific date if needed. 
+date: \today                  # Date of the letter. Replace with a specific date if needed. 
 
 recipient:
   honorific: Mr

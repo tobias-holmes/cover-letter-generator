@@ -21,6 +21,7 @@ import yaml
 import subprocess
 from jinja2 import Environment, FileSystemLoader
 from io import StringIO
+from datetime import date
 
 
 # Function to load YAML files with Jinja2 templating
@@ -50,8 +51,13 @@ def render_tex_file(language: str = "en") -> str:
     with open("context/position_context.yml", "r") as file:
         position_context = yaml.safe_load(file)
 
-    # Combine personal data
-    sender_position_context = {**sender_context, **position_context}
+    # Combine personal data and add today's date and start date in DD.MM.YYYY format
+    sender_position_context = {
+        **sender_context,
+        **position_context,
+        "today": date.today().isoformat(),
+        "start_date": sender_context.get("start_date_iso").strftime("%d.%m.%Y"),
+    }
 
     # Cover letter content
     if language == "de":

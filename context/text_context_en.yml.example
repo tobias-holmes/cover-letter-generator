@@ -10,6 +10,8 @@ body:
   - >
     My experience includes managing successful campaigns, enhancing brand visibility, and driving customer engagement. I would love to contribute to the mission of {{ recipient.company_short }}
   - >
-    {% if give_start_date == true %}My earliest possible starting date would be {{ start_date }}.{% endif %}
+    {% if give_start_date == true %}{% if (start_date_iso | string) > (today | string) %}
+    My earliest possible starting date would be {{ start_date }}.
+    {% else %}I am available immediately.{% endif %}{% endif %}
     {% if give_salary_expectation == true %}Based on my qualifications and professional experience, I consider an annual gross salary of {{ salary_expectation }} to be appropriate.{% endif %}
 closing: Kind regards
