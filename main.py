@@ -88,9 +88,10 @@ def render_tex_file(language: str = "en") -> str:
     sender_identifier = f"{sender_first_name[0]}{sender_last_name}".lower()
     company_short = context["recipient"]["company_short"].replace(" ", "_").lower()
     language = context["language"].lower()
+    position = context["position"].replace(" ", "_").lower()
 
     # Create dynamic filename
-    output_filename = f"cover_letter-{company_short}-{sender_identifier}-{language}.tex"
+    output_filename = f"cover_letter-{company_short}-{position}-{sender_identifier}-{language}.tex"
 
     # Save .tex file
     tex_file = "renders/" + output_filename
