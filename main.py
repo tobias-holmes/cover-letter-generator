@@ -86,12 +86,13 @@ def render_tex_file(language: str = "en") -> str:
     sender_last_name = context["sender"]["last_name"]
     # Combine the first initial with the last name
     sender_identifier = f"{sender_first_name[0]}{sender_last_name}".lower()
-    company_short = context["recipient"]["company_short"].replace(" ", "_").lower()
+    company_short = context["recipient"]["company_short"]
+    company_short_filename = company_short.replace(" ", "_").lower()
     language = context["language"].lower()
-    position = context["position"].replace(" ", "_").lower() if context.get('position') else "init"
+    position = "init" if context.get("initiative") == True else context["position"].replace(" ", "_").lower()
 
     # Create dynamic filename
-    output_filename = f"cover_letter-{company_short}-{position}-{sender_identifier}-{language}.tex"
+    output_filename = f"cover_letter-{company_short_filename}-{position}-{sender_identifier}-{language}.tex"
 
     # Save .tex file
     tex_file = "renders/" + output_filename
