@@ -81,15 +81,29 @@ def render_tex_file(language: str = "en") -> str:
     # Render LaTeX
     rendered = template.render(**context)
 
-    # Extract relevant information for the filename
+    ## Extract relevant information for the filename
+    # Combine the first initial with the last name
     sender_first_name = context["sender"]["first_name"]
     sender_last_name = context["sender"]["last_name"]
-    # Combine the first initial with the last name
     sender_identifier = f"{sender_first_name[0]}{sender_last_name}".lower()
-    company_short = context["recipient"]["company_short"]
-    company_short_filename = company_short.replace(" ", "_").lower()
+    
+    # Language and replacements for filename
     language = context["language"].lower()
-    position = "init" if context.get("initiative") == True else context["position"].replace(" ", "_").lower()
+    replacements = [("-", "_"),(",", "_"),(".", "_"), (":","_"),(" ", "_"),("/", "_"),("&","_"),("*","_"),("(",""),(")","")]
+    
+    # Set company short name, replacing spaces and special characters with underscores
+    company_short_filename = context["recipient"]["company_short"].lower()
+    for old, new in replacements:
+        company_short_filename = company_short_filename.replace(old, new)
+    
+    # Set position, replacing spaces and special characters with underscores
+    if context.get("initiative") == True:
+        position = "init" 
+    else:
+        position = context["position"].lower()
+        print(position)
+        for old, new in replacements:
+            position = position.replace(old, new)
 
     # Create dynamic filename
     output_filename = f"cover_letter-{company_short_filename}-{position}-{sender_identifier}-{language}.tex"
