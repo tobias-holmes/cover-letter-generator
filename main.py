@@ -23,6 +23,23 @@ from jinja2 import Environment, FileSystemLoader
 from io import StringIO
 from datetime import date
 
+# Escape LaTeX special characters in strings
+LATEX_SUBS = {
+    "&": r"\&",
+    "%": r"\%",
+    "$": r"\$",
+    "#": r"\#",
+    "_": r"\_",
+    "{": r"\{",
+    "}": r"\}",
+    "~": r"\textasciitilde{}",
+    "^": r"\textasciicircum{}",
+    "\\": r"\textbackslash{}",
+}
+
+def latex_escape(text):
+    return "".join(LATEX_SUBS.get(c, c) for c in text)
+
 
 # Function to load YAML files with Jinja2 templating
 def load_yaml_with_jinja(filename: str, context: str) -> dict:
@@ -52,7 +69,7 @@ def render_tex_file(language: str = "en") -> str:
         position_context = yaml.safe_load(file)
 
     # Combine personal data and add today's date and start date in DD.MM.YYYY format
-    sender_position_context = {
+    combined_context = {
         **sender_context,
         **position_context,
         "today": date.today().isoformat(),
@@ -62,20 +79,21 @@ def render_tex_file(language: str = "en") -> str:
     # Cover letter content
     if language == "de":
         text_context = load_yaml_with_jinja(
-            "context/text_context_de.yml", sender_position_context
+            "context/text_context_de.yml", combined_context
         )
     elif language == "en":
         text_context = load_yaml_with_jinja(
-            "context/text_context_en.yml", sender_position_context
+            "context/text_context_en.yml", combined_context
         )
     else:
         raise ValueError(f"Unsupported language '{language}'. Please use 'en' or 'de'.")
 
     # Combine data from both YAML files
-    context = {**sender_position_context, **text_context}
+    context = {**combined_context, **text_context}
 
     # Set up Jinja2 environment
     env = Environment(loader=FileSystemLoader("templates"))
+    env.filters['latex'] = latex_escape
     template = env.get_template("cover_letter_template.tex.j2")
 
     # Render LaTeX
